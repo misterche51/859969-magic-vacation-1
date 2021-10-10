@@ -5,6 +5,7 @@ export default () => {
   let chatBlock = document.querySelector(`.js-chat`);
 
   messageForm.addEventListener(`submit`, function (e) {
+    messageField.classList.add("activated");
     e.preventDefault();
 
     let scrollToBottom = function () {
@@ -45,7 +46,8 @@ export default () => {
         setTimeout(function () {
           let lastMessage = document.querySelector(`.chat__message--last`);
           if (lastMessage) {
-            let lastMessagePlaceholder = lastMessage.querySelector(`.chat__placeholder`);
+            let lastMessagePlaceholder =
+              lastMessage.querySelector(`.chat__placeholder`);
             let lastMessageText = lastMessage.querySelector(`p`);
             lastMessagePlaceholder.classList.add(`chat__placeholder--hidden`);
             setTimeout(function () {
@@ -80,6 +82,5 @@ export default () => {
     };
 
     postQuestion();
-
   });
 };
