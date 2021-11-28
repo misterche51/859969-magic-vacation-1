@@ -2,6 +2,8 @@ import Swiper from "swiper";
 
 export default () => {
   let storySlider;
+  const SPEED = 800;
+
   let sliderContainer = document.getElementById(`story`);
   sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
 
@@ -15,6 +17,7 @@ export default () => {
           el: `.swiper-pagination`,
           type: `bullets`,
         },
+        speed: SPEED / 2,
         keyboard: {
           enabled: true,
         },
@@ -42,6 +45,7 @@ export default () => {
       storySlider = new Swiper(`.js-slider`, {
         slidesPerView: 2,
         slidesPerGroup: 2,
+        speed: SPEED,
         pagination: {
           el: `.swiper-pagination`,
           type: `fraction`,
@@ -56,7 +60,6 @@ export default () => {
         on: {
           slideChange: () => {
             const { activeIndex } = storySlider;
-            getTextNodes();
             if (activeIndex === 0) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg")`;
             } else if (activeIndex === 2) {

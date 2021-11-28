@@ -96,6 +96,7 @@
 
   @media (min-width: $stop-scaling) {
     margin-top: 15px;
+    right: 8px; //добавил для центорвки, а то уродски смотрелось, имхо
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
