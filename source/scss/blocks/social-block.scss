@@ -35,6 +35,9 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
+    
+    transition-property: width, height;
+    transition-duration: 0.2s;
   }
 
   svg {
@@ -42,6 +45,7 @@
     display: block;
     width: 2.3rem;
     height: 2.2rem;
+
   }
 
   &:hover,
@@ -92,6 +96,7 @@
 
   @media (min-width: $stop-scaling) {
     margin-top: 15px;
+    right: 8px; //добавил для центорвки, а то уродски смотрелось, имхо
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
@@ -138,13 +143,22 @@
   }
 
   .social-block--active & {
-    opacity: 1;
+    opacity: 0;
     pointer-events: auto;
   }
 
   li {
     flex: none;
     margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(5px);
+
+    &.active {
+      transition-property: opacity, transform;
+      transition-duration: 0.2s, 0.2s;
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     @media (min-width: $stop-scaling) {
       margin-bottom: 5px;
@@ -168,6 +182,7 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  transition: color 0.2s linear;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
