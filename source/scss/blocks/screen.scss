@@ -40,17 +40,24 @@
 
 .screen__footer {
   position: absolute;
-  bottom: 0;
+  opacity: 0;
+  bottom: -3.5rem;
   left: 0;
   right: 0;
   color: $c-dark;
   background-color: $c-light;
   z-index: 1;
+  transition: all 1s cubic-bezier(.34,1.01,.53,.97);
 
   @media (max-width: $tablet) and (orientation: portrait) {
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 0 3.6rem 0 0;
+
+    &.init {
+      opacity: 0;
+      bottom: -1rem;
+    }
 
     &.screen__footer--full {
       width: 100%;
@@ -62,6 +69,11 @@
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 0 3.6rem 0 0;
+
+    &.init {
+      opacity: 0;
+      bottom: -1rem;
+    }
 
     &.screen__footer--full {
       width: 100%;
@@ -88,6 +100,11 @@
       opacity: 1;
     }
   }
+}
+
+body.loaded .screen__footer {
+  bottom: 0;
+  opacity: 1;
 }
 
 .screen__footer-enlarge {

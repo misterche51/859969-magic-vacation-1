@@ -26,15 +26,23 @@
   justify-content: space-between;
 }
 
+body.loaded .page-header__logo {
+  left: 0;
+  opacity: 1;
+}
+
 .page-header__logo {
   @include hover;
   position: relative;
   flex: none;
+  opacity: 0;
+  left: -4rem;
   top: -0.5rem;
   display: block;
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  transition: all 1s cubic-bezier(.34,1.01,.53,.97);
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -127,9 +135,15 @@
   }
 }
 
+body.loaded .page-header__nav {
+  opacity: 1;
+}
+
 .page-header__nav {
   display: flex;
   align-items: center;
+  transition: opacity 1s cubic-bezier(.34,1.01,.53,.97);
+  opacity: 0;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
