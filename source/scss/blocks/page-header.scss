@@ -259,7 +259,8 @@ body.loaded .page-header__nav {
     overflow: hidden;
 
     &:hover,
-    &:focus {
+    &:focus,
+    &.active {
       color: $c-purple;
       &:before {
         width: 100%;
@@ -281,8 +282,6 @@ body.loaded .page-header__nav {
     &.active {
       color: $c-light !important;
       &::before {
-        width: 100%;
-        left: 0;
         background-color: $c-light !important;
       }
     }
