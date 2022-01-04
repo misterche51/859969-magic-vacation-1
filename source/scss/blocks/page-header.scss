@@ -259,8 +259,7 @@ body.loaded .page-header__nav {
     overflow: hidden;
 
     &:hover,
-    &:focus,
-    &.active {
+    &:focus {
       color: $c-purple;
       &:before {
         width: 100%;
@@ -286,6 +285,11 @@ body.loaded .page-header__nav {
       }
     }
   }
+}
+
+body.loaded a.active:before {
+  width: 100%;
+  left: 0;
 }
 
 .page-header__social {
