@@ -258,66 +258,34 @@ body.loaded .page-header__nav {
     transition: color 0.2s linear;
     overflow: hidden;
 
-    &::after {
-      content: "";
-      position: absolute;
+    &:hover,
+    &:focus {
+      color: $c-purple;
+      &:before {
+        width: 100%;
+        left: 0;
+      }
+    }
+
+    &::before {
+      content: '';
       bottom: 0;
-      width: 100%;
+      right: 0;
+      position: absolute;
+      width: 0%;
       height: 2px;
-      background-color: $c-light;
-      display: block;
-      opacity: 0;
-      left: -100%;
-      transition: all 0.2s linear;
-
-      @media (max-width: $tablet) and (orientation: portrait) {
-        left: 0;
-        right: 0;
-        background-color: $c-dark;
-      }
-
-      @media (max-width: $mobile) and (orientation: landscape) {
-        left: 0;
-        right: 0;
-        background-color: $c-dark;
-      }
+      background-color: $c-purple;
+      transition: 0.2s;
     }
 
     &.active {
       color: $c-light !important;
-      &::after {
-        left: 0 !important;
-        opacity: 1;
-        background-color: $c-light !important;
-        
-      }
-    }
-    &.hovered {
-      color: $c-purple;
-      &::after {
+      &::before {
+        width: 100%;
         left: 0;
-        opacity: 1;
-        background-color: $c-purple;
+        background-color: $c-light !important;
       }
     }
-    &.not-hovered {
-      &::after {
-        left: 100%;
-        opacity: 0;
-        background-color: $c-light;
-      }
-    }
-    // &:hover,
-    // &:focus {
-    //   color: $c-purple;
-    //   outline: none;
-
-    //   &::after {
-    //     opacity: 1;
-    //     background-color: $c-purple;
-    //     width: 100%;
-    //   }
-    // }
   }
 }
 
