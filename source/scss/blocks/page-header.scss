@@ -26,15 +26,23 @@
   justify-content: space-between;
 }
 
+body.loaded .page-header__logo {
+  left: 0;
+  opacity: 1;
+}
+
 .page-header__logo {
   @include hover;
   position: relative;
   flex: none;
+  opacity: 0;
+  left: -4rem;
   top: -0.5rem;
   display: block;
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  transition: all 1s cubic-bezier(.34,1.01,.53,.97);
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -127,9 +135,15 @@
   }
 }
 
+body.loaded .page-header__nav {
+  opacity: 1;
+}
+
 .page-header__nav {
   display: flex;
   align-items: center;
+  transition: opacity 1s cubic-bezier(.34,1.01,.53,.97);
+  opacity: 0;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -244,67 +258,38 @@
     transition: color 0.2s linear;
     overflow: hidden;
 
-    &::after {
-      content: "";
-      position: absolute;
+    &:hover,
+    &:focus {
+      color: $c-purple;
+      &:before {
+        width: 100%;
+        left: 0;
+      }
+    }
+
+    &::before {
+      content: '';
       bottom: 0;
-      width: 100%;
+      right: 0;
+      position: absolute;
+      width: 0%;
       height: 2px;
-      background-color: $c-light;
-      display: block;
-      opacity: 0;
-      left: -100%;
-      transition: all 0.2s linear;
-
-      @media (max-width: $tablet) and (orientation: portrait) {
-        left: 0;
-        right: 0;
-        background-color: $c-dark;
-      }
-
-      @media (max-width: $mobile) and (orientation: landscape) {
-        left: 0;
-        right: 0;
-        background-color: $c-dark;
-      }
+      background-color: $c-purple;
+      transition: 0.2s;
     }
 
     &.active {
       color: $c-light !important;
-      &::after {
-        left: 0 !important;
-        opacity: 1;
+      &::before {
         background-color: $c-light !important;
-        
       }
     }
-    &.hovered {
-      color: $c-purple;
-      &::after {
-        left: 0;
-        opacity: 1;
-        background-color: $c-purple;
-      }
-    }
-    &.not-hovered {
-      &::after {
-        left: 100%;
-        opacity: 0;
-        background-color: $c-light;
-      }
-    }
-    // &:hover,
-    // &:focus {
-    //   color: $c-purple;
-    //   outline: none;
-
-    //   &::after {
-    //     opacity: 1;
-    //     background-color: $c-purple;
-    //     width: 100%;
-    //   }
-    // }
   }
+}
+
+body.loaded a.active:before {
+  width: 100%;
+  left: 0;
 }
 
 .page-header__social {

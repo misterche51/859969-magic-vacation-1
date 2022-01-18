@@ -22,20 +22,5 @@ export default () => {
         document.body.classList.remove(`menu-opened`);
       }
     });
-    menuLinks[i].addEventListener(`mouseover`, function (e) {
-      if (!e.target.classList.contains("active")) {
-        e.target.classList.remove("not-hovered");
-        e.target.classList.add("hovered");
-      }
-    });
-    menuLinks[i].addEventListener(`mouseout`, function (e) {
-      if (!e.target.classList.contains("active")) {
-        e.target.classList.remove("hovered");
-        e.target.classList.add("not-hovered");
-        setTimeout(() => {
-          e.target.classList.remove("not-hovered");
-        }, 200);
-      }
-    });
   }
 };
